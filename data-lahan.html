@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Lahan</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script 
+    type="module" 
+    src="assets/js/main.js">
+    </script>
+</head>
+
+<body>
+    <header class="app-header">
+        <div class="container header-container">
+            <div class="header-top">
+                <div class="header-brand">
+                    <h1>Manajemen Lahan &amp; Tanaman</h1>
+                    <p class="subtitle">UTS Dasar Pemrograman Frontend</p>
+                </div>
+                <button class="nav-toggle" type="button" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="app-nav">☰</button>
+            </div>
+            <nav class="app-nav" id="app-nav" aria-label="Menu utama">
+                <ul class="nav-menu">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="data-lahan.html" aria-current="page">Lahan</a></li>
+                    <li><a href="data-tanaman.html">Tanaman</a></li>
+                    <li><a href="card.html">Kartu Lahan &amp; Tanaman</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Konten Utama -->
+    <main class="container main-content">
+        <!-- Form Tambah Lahan -->
+        <section id="form-lahan-section" class="card form-section" aria-labelledby="form-lahan-title">
+            <h2 id="form-lahan-title">Tambah Data Lahan</h2>
+            <form id="lahan-form" novalidate>
+                <div class="form-group">
+                    <label for="lahan-nama">Nama Lahan:</label>
+                    <input type="text" id="lahan-nama" placeholder="Contoh: Lahan Sawah Blok A"
+                         aria-required="true" aria-describedby="lahan-nama-error">
+                    <small class="error-text" id="lahan-nama-error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="lahan-lokasi">Lokasi:</label>
+                    <input type="text" id="lahan-lokasi" placeholder="Contoh: Desa Grogol, Banyuwangi"
+                          aria-required="true" aria-describedby="lahan-lokasi-error">
+                    <small class="error-text" id="lahan-lokasi-error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="lahan-luas">Luas (Hektar):</label>
+                    <input type="number" id="lahan-luas" min="0.1" step="0.1" placeholder="Contoh: 2.5"
+                          aria-required="true" aria-describedby="lahan-luas-error">
+                    <small class="error-text" id="lahan-luas-error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="lahan-jenis-tanah">Jenis Tanah:</label>
+                    <select id="lahan-jenis-tanah" aria-required="true" aria-describedby="lahan-jenis-tanah-error">
+                        <option value="">-- Pilih Jenis Tanah --</option>
+                        <option value="Aluvial">Aluvial</option>
+                        <option value="Regosol">Regosol</option>
+                        <option value="Latosol">Latosol</option>
+                        <option value="Andosol">Andosol</option>
+                        <option value="Grumosol">Grumosol</option>
+                    </select>
+                    <small class="error-text" id="lahan-jenis-tanah-error"></small>
+                </div>
+
+                <div class="button-row">
+                    <button type="submit" id="btn-submit-lahan" class="btn btn-primary">Simpan Data Lahan</button>
+                    <button type="button" id="btn-cancel-lahan" class="btn btn-warning" hidden>Batal Edit</button>
+                    <button type="button" id="btn-clear-lahan" class="btn btn-secondary">Kosongkan Form</button>
+                </div>
+            </form>
+
+            <div id="lahan-feedback" class="feedback-msg" role="status" aria-live="polite"></div>
+        </section>
+
+        <!-- Live Preview -->
+        <section class="card preview-section" aria-labelledby="preview-lahan-title">
+            <h2 id="preview-lahan-title">Live Preview</h2>
+            <p class="section-desc">Data lahan akan tampil otomatis saat kamu mengisi form.</p>
+            <div id="live-preview-lahan" class="preview-box" aria-live="polite"></div>
+        </section>
+
+        <!-- Daftar Lahan -->
+        <section id="data-lahan-section" class="card list-section" aria-labelledby="data-lahan-title">
+            <div class="list-header">
+                <h2 id="data-lahan-title">Daftar Lahan</h2>
+                <div class="toolbar">
+                    <!-- Pencarian -->
+                    <div class="filter-group">
+                        <label for="search-lahan">Cari:</label>
+                        <input type="search" id="search-lahan" placeholder="Nama atau lokasi...">
+                    </div>
+
+                    <!-- Filter Jenis Tanah -->
+                    <div class="filter-group">
+                        <label for="filter-jenis-tanah">Jenis Tanah:</label>
+                        <select id="filter-jenis-tanah">
+                            <option value="">Semua Jenis Tanah</option>
+                            <option value="Aluvial">Aluvial</option>
+                            <option value="Regosol">Regosol</option>
+                            <option value="Latosol">Latosol</option>
+                            <option value="Andosol">Andosol</option>
+                            <option value="Grumosol">Grumosol</option>
+                        </select>
+                    </div>
+
+                    <!-- Reset Data -->
+                    <button type="button" id="btn-reset-lahan" class="btn btn-secondary btn-small">Reset Data</button>
+                </div>
+            </div>
+
+            <!-- Tabel Data Lahan -->
+            <div class="table-wrap">
+                <table>
+                    <caption class="visually-hidden">Daftar data lahan</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nama Lahan</th>
+                            <th scope="col">Lokasi</th>
+                            <th scope="col">Luas</th>
+                            <th scope="col">Jenis Tanah</th>
+                            <th scope="col">Aksi</th>
+                        </tr>
+                    </thead>
+                    <!-- Data akan dibuat oleh JavaScript -->
+                    <tbody id="lahan-table-body"></tbody>
+                </table>
+            </div>
+            <p id="lahan-summary" class="summary"></p>
+            <!-- Pesan jika belum ada data -->
+            <p id="lahan-empty" class="empty-msg" hidden>Belum ada data lahan. Silakan tambahkan melalui form di atas.</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="container">
+            <p>
+                &copy; 2026 STIKOM PGRI Banyuwangi — Sistem Manajemen Data
+                Lahan &amp; Tanaman. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>

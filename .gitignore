@@ -1,0 +1,17 @@
+# Sistem operasi
+.DS_Store
+Thumbs.db
+
+# Editor & IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dependensi & log
+node_modules/
+*.log
+
+# Build output
+dist/
+build/

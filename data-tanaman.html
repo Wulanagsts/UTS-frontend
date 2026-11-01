@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Tanaman</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script 
+    type="module" 
+    src="assets/js/main.js">
+    </script>
+</head>
+
+<body>
+    <header class="app-header">
+        <div class="container header-container">
+            <div class="header-top">
+                <div class="header-brand">
+                    <h1>Manajemen Lahan &amp; Tanaman</h1>
+                    <p class="subtitle">UTS Dasar Pemrograman Frontend</p>
+                </div>
+                <button class="nav-toggle" type="button" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="app-nav">☰</button>
+            </div>
+            <nav class="app-nav" id="app-nav" aria-label="Menu utama">
+                <ul class="nav-menu">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="data-lahan.html">Lahan</a></li>
+                    <li><a href="data-tanaman.html" aria-current="page">Tanaman</a></li>
+                    <li><a href="card.html">Kartu Lahan &amp; Tanaman</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>    
+
+    <!-- Konten Utama -->
+    <main class="container main-content">
+
+        <!-- Form Tambah Tanaman -->
+        <section id="form-tanaman-section" class="card form-section" aria-labelledby="form-tanaman-title">
+            <h2 id="form-tanaman-title">Tambah Data Tanaman</h2>
+            <form id="tanaman-form" novalidate>
+
+                <div class="form-group">
+                    <label for="tanaman-nama">Nama Tanaman:</label>
+                    <input type="text" id="tanaman-nama" placeholder="Contoh: Padi IR64"
+                        aria-required="true" aria-describedby="tanaman-nama-error">
+                    <small class="error-text" id="tanaman-nama-error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="tanaman-jenis">Jenis Tanaman:</label>
+                    <select id="tanaman-jenis" aria-required="true" aria-describedby="tanaman-jenis-error">
+                        <option value="">-- Pilih Jenis Tanaman --</option>
+                        <option value="Pangan">Pangan</option>
+                        <option value="Hortikultura">Hortikultura</option>
+                        <option value="Perkebunan">Perkebunan</option>
+                        <option value="Palawija">Palawija</option>
+                    </select>
+                    <small class="error-text" id="tanaman-jenis-error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="tanaman-lahan">Ditanam di Lahan:</label>
+                    <select id="tanaman-lahan" aria-required="true" aria-describedby="tanaman-lahan-error">
+                        <option value="">-- Pilih Lahan --</option>
+                    </select>
+                    <small class="error-text" id="tanaman-lahan-error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="tanaman-tanggal">Tanggal Tanam:</label>
+                    <input type="date" id="tanaman-tanggal" aria-required="true" aria-describedby="tanaman-tanggal-error">
+                    <small class="error-text" id="tanaman-tanggal-error"></small>
+                </div>
+
+                <div class="button-row">
+                    <button type="submit" id="btn-submit-tanaman" class="btn btn-primary">Simpan Data Tanaman</button>
+                    <button type="button" id="btn-cancel-tanaman" class="btn btn-warning" hidden>Batal Edit</button>
+                    <button type="button" id="btn-clear-tanaman" class="btn btn-secondary">Kosongkan Form</button>
+                </div>
+            </form>
+
+            <div id="tanaman-feedback" class="feedback-msg" role="status" aria-live="polite"></div>
+        </section>
+
+        <!-- Live Preview -->
+        <section class="card preview-section" aria-labelledby="preview-tanaman-title">
+            <h2 id="preview-tanaman-title">Live Preview</h2>
+            <p class="section-desc">Data tanaman akan tampil otomatis saat kamu mengisi form.</p>
+            <div id="live-preview-tanaman" class="preview-box" aria-live="polite"></div>
+        </section>
+
+        <!-- Daftar Tanaman -->
+        <section id="data-tanaman-section" class="card list-section" aria-labelledby="data-tanaman-title">
+            <div class="list-header">
+                <h2 id="data-tanaman-title">Daftar Tanaman</h2>
+                <div class="toolbar">
+                    <!-- Pencarian -->
+                    <div class="filter-group">
+                        <label for="search-tanaman">Cari:</label>
+                        <input type="search" id="search-tanaman" placeholder="Nama tanaman atau jenis...">
+                    </div>
+
+                    <!-- Filter Jenis Tanaman -->
+                    <div class="filter-group">
+                        <label for="filter-jenis">Jenis Tanaman:</label>
+                        <select id="filter-jenis">
+                            <option value="">Semua Jenis Tanaman</option>
+                            <option value="Pangan">Pangan</option>
+                            <option value="Hortikultura">Hortikultura</option>
+                            <option value="Perkebunan">Perkebunan</option>
+                            <option value="Palawija">Palawija</option>
+                        </select>
+                    </div>
+
+                    <!-- Reset Data -->
+                    <button type="button" id="btn-reset-tanaman" class="btn btn-secondary btn-small">Reset Data</button>
+                </div>
+            </div>
+
+            <!-- Tabel Data Tanaman -->
+            <div class="table-wrap">
+                <table>
+                    <caption class="visually-hidden">Daftar data tanaman</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nama Tanaman</th>
+                            <th scope="col">Jenis</th>
+                            <th scope="col">Lahan</th>
+                            <th scope="col">Tanggal Tanam</th>
+                            <th scope="col">Aksi</th>
+                        </tr>
+                    </thead>
+                    <!-- Data akan dibuat oleh JavaScript -->
+                    <tbody id="tanaman-table-body"></tbody>
+                </table>
+            </div>
+
+            <!-- Ringkasan Data -->
+            <p id="tanaman-summary" class="summary"></p>
+
+            <!-- Pesan jika belum ada data -->
+            <p id="tanaman-empty" class="empty-msg" hidden>Belum ada data tanaman. Silakan tambahkan melalui form di atas.</p>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="container">
+            <p>
+                &copy; 2026 STIKOM PGRI Banyuwangi — Sistem Manajemen Data
+                Lahan &amp; Tanaman. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>

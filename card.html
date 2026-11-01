@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kartu Data Lahan dan Tanaman</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script 
+    type="module" 
+    src="assets/js/main.js"> 
+    </script>
+</head>
+
+<body>
+    <header class="app-header">
+        <div class="container header-container">
+            <div class="header-top">
+                <div class="header-brand">
+                    <h1>Manajemen Lahan &amp; Tanaman</h1>
+                    <p class="subtitle">UTS Dasar Pemrograman Frontend</p>
+                </div>
+                <button class="nav-toggle" type="button" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="app-nav">☰</button>
+            </div>
+            <nav class="app-nav" id="app-nav" aria-label="Menu utama">
+                <ul class="nav-menu">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="data-lahan.html">Lahan</a></li>
+                    <li><a href="data-tanaman.html">Tanaman</a></li>
+                    <li><a href="card.html" aria-current="page">Kartu Lahan &amp; Tanaman</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <main class="container main-content">
+        <div id="card-feedback" class="feedback-msg" role="status" aria-live="polite"></div>
+        <section aria-labelledby="lahan-card-title">
+            <h2 id="lahan-card-title">Daftar Lahan</h2>
+            <div id="lahan-container" class="data-grid" aria-live="polite"></div>
+
+            <p id="lahan-card-empty" class="empty-msg" hidden>Belum ada data lahan.
+                <a href="data-lahan.html">Tambah data lahan</a> terlebih dahulu.
+            </p>
+        </section>
+
+        <section aria-labelledby="tanaman-card-title">
+            <h2 id="tanaman-card-title">Daftar Tanaman</h2>
+            <div id="tanaman-container" class="data-grid" aria-live="polite"></div>
+
+            <p id="tanaman-card-empty" class="empty-msg" hidden>Belum ada data tanaman.
+                <a href="data-tanaman.html">Tambah data tanaman</a> terlebih dahulu.
+            </p>
+        </section>
+    </main>
+
+    <footer class="app-footer">                                                                                        
+        <div class="container">                                                                                        
+            <p>&copy; 2026 STIKOM PGRI Banyuwangi — Sistem Manajemen Data Lahan &amp; Tanaman. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrasi</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script 
+    type="module" 
+    src="assets/js/main.js">
+    </script>
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="container">
+            <h1>Manajemen Lahan &amp; Tanaman</h1>
+            <p class="subtitle">UTS Dasar Pemrograman Frontend</p>
+        </div>
+    </header>
+
+    <main class="container main-content">
+        <section id="register-view" class="card register-card" aria-labelledby="register-title">
+            <h2 id="register-title">Registrasi</h2>
+            <p class="section-desc">Silakan daftar terlebih dahulu untuk mengelola data lahan dan tanaman.</p>
+
+            <form id="register-form" novalidate>
+                <div class="form-group">
+                    <label for="reg-username">Username:</label>
+                    <input type="text" id="reg-username" placeholder="Minimal 4 karakter"
+                        autocomplete="username" aria-required="true" aria-describedby="reg-username-error">
+                    <small class="error-text" id="reg-username-error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-email">Email:</label>
+                    <input type="email" id="reg-email" placeholder="Contoh: user@stikom.ac.id"
+                        autocomplete="email" aria-required="true" aria-describedby="reg-email-error">
+                    <small class="error-text" id="reg-email-error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-password">Password:</label>
+                    <input type="password" id="reg-password" placeholder="Minimal 6 karakter"
+                        autocomplete="new-password" aria-required="true" aria-describedby="reg-password-error">
+                    <small class="error-text" id="reg-password-error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-confirm-password">Konfirmasi Password:</label>
+                    <input type="password" id="reg-confirm-password" placeholder="Ulangi password"
+                        autocomplete="new-password" aria-required="true" aria-describedby="reg-confirm-password-error">
+                    <small class="error-text" id="reg-confirm-password-error"></small>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Daftar &amp; Masuk Sistem</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <div class="container">
+            <p>&copy; 2026 STIKOM PGRI Banyuwangi — Sistem Manajemen Data Lahan &amp; Tanaman. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
